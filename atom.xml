@@ -37,6 +37,26 @@
   </entry>
   
   <entry>
+    <title>定期删除过期文件夹</title>
+    <link href="http://yoursite.com/2019/06/02/%E5%88%A0%E9%99%A4%E8%BF%87%E6%9C%9F%E5%A4%87%E4%BB%BD/"/>
+    <id>http://yoursite.com/2019/06/02/删除过期备份/</id>
+    <published>2019-06-02T10:34:23.000Z</published>
+    <updated>2019-06-03T07:53:49.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>定期备份mysql数据库,只保留7天数据<br>•┈┈┈┈┈┈୨୧┈┈┈┈┈┈•<br><a id="more"></a><br>之前那个shell删除定期文件夹失败<br>在此基础上做了优化</p><p>#!/bin/bash<br>total=$( ls 文件夹目录 -lt | grep -v total | wc -l )<br>num1=7<br>del=$(( $total-$num1 ))</p><p>#echo $del<br>file=$( ls 文件夹目录 -r | grep -v total | tail -n $del )<br>array=( echo $file )<br>for i in ${array[@]}<br>do<br>rm -rf /文件夹目录/$i<br>done</p><p>「完」</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;定期备份mysql数据库,只保留7天数据&lt;br&gt;•┈┈┈┈┈┈୨୧┈┈┈┈┈┈•&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="shell" scheme="http://yoursite.com/tags/shell/"/>
+    
+  </entry>
+  
+  <entry>
     <title>linux下不同服务器间数据传输 (rcp,scp,rsync,ftp,sftp,lftp,wget,curl)</title>
     <link href="http://yoursite.com/2019/05/30/%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93/"/>
     <id>http://yoursite.com/2019/05/30/文件传输/</id>
