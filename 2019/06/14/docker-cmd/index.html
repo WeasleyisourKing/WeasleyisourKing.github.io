@@ -125,7 +125,7 @@
 
 
 
-  <meta name="keywords" content="shell,">
+  <meta name="keywords" content="docker,">
 
 
 
@@ -139,16 +139,16 @@
 
 
 <meta name="description" content="•┈┈┈┈┈┈୨୧┈┈┈┈┈┈•">
-<meta name="keywords" content="shell">
+<meta name="keywords" content="docker">
 <meta property="og:type" content="article">
-<meta property="og:title" content="yum安装mysql">
-<meta property="og:url" content="http://yoursite.com/2019/04/25/mysql安装/index.html">
+<meta property="og:title" content="docker-dockerfile cmd&#x2F;entroypoint区别">
+<meta property="og:url" content="http://yoursite.com/2019/06/14/docker-cmd/index.html">
 <meta property="og:site_name" content="Weasley is our King!~">
 <meta property="og:description" content="•┈┈┈┈┈┈୨୧┈┈┈┈┈┈•">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-30T02:46:53.000Z">
+<meta property="og:updated_time" content="2019-06-14T07:12:40.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="yum安装mysql">
+<meta name="twitter:title" content="docker-dockerfile cmd&#x2F;entroypoint区别">
 <meta name="twitter:description" content="•┈┈┈┈┈┈୨୧┈┈┈┈┈┈•">
 
 
@@ -179,13 +179,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/04/25/mysql安装/">
+  <link rel="canonical" href="http://yoursite.com/2019/06/14/docker-cmd/">
 
 
 
 
 
-  <title>yum安装mysql | Weasley is our King!~</title>
+  <title>docker-dockerfile cmd/entroypoint区别 | Weasley is our King!~</title>
   
 
 
@@ -331,7 +331,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">yum安装mysql</h1>
+          <h1 class="post-title" itemprop="name headline">docker-dockerfile cmd/entroypoint区别</h1>
         
 
         <div class="post-meta">
@@ -343,8 +343,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-25T10:34:23+08:00">
-                2019-04-25
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-14T14:55:11+08:00">
+                2019-06-14
               </time>
             
 
@@ -361,7 +361,7 @@
 
           
           
-             <span id class="leancloud_visitors" data-flag-title="yum安装mysql">
+             <span id class="leancloud_visitors" data-flag-title="docker-dockerfile cmd/entroypoint区别">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -423,8 +423,53 @@
       
 
       
-        <p>•┈┈┈┈┈┈୨୧┈┈┈┈┈┈•<br><a id="more"></a><br>Linux/UNIX 上安装 MySQL<br>Linux平台上推荐使用RPM包来安装Mysql,MySQL AB提供了以下RPM包的下载地址：<br>MySQL - MySQL服务器。你需要该选项，除非你只想连接运行在另一台机器上的MySQL服务器。<br>MySQL-client - MySQL 客户端程序，用于连接并操作Mysql服务器。<br>MySQL-devel - 库和包含文件，如果你想要编译其它MySQL客户端，例如Perl模块，则需要安装该RPM包。<br>MySQL-shared - 该软件包包含某些语言和应用程序需要动态装载的共享库(libmysqlclient.so*)，使用MySQL。<br>MySQL-bench - MySQL数据库服务器的基准和性能测试工具。<br>安装前，我们可以检测系统是否自带安装 MySQL:<br>rpm -qa | grep mysql<br>如果你系统有安装，那可以选择进行卸载:<br>rpm -e mysql　　// 普通删除模式<br>rpm -e –nodeps mysql　　// 强力删除模式，如果使用上面命令删除时，提示有依赖的其它文件，则用该命令可以对其进行强力删除<br>安装 MySQL：<br>接下来我们在 Centos7 系统下使用 yum 命令安装 MySQL，需要注意的是 CentOS 7 版本中 MySQL数据库已从默认的程序列表中移除，所以在安装前我们需要先去官网下载 Yum 资源包，下载地址为：<a href="https://dev.mysql.com/downloads/repo/yum/" target="_blank" rel="noopener">https://dev.mysql.com/downloads/repo/yum/</a></p>
-<p>wget <a href="http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm" target="_blank" rel="noopener">http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm</a><br>rpm -ivh mysql-community-release-el7-5.noarch.rpm<br>yum update<br>yum install mysql-server<br>权限设置：<br>chown mysql:mysql -R /var/lib/mysql<br>初始化 MySQL：<br>mysqld –initialize<br>启动 MySQL：<br>systemctl start mysqld<br>查看 MySQL 运行状态：<br>systemctl status mysqld<br>注意：如果我们是第一次启动 mysql 服务，mysql 服务器首先会进行初始化的配置。<br>此外,你也可以使用 MariaDB 代替，MariaDB 数据库管理系统是 MySQL 的一个分支，主要由开源社区在维护，采用 GPL 授权许可。开发这个分支的原因之一是：甲骨文公司收购了 MySQL 后，有将 MySQL 闭源的潜在风险，因此社区采用分支的方式来避开这个风险。<br>MariaDB的目的是完全兼容MySQL，包括API和命令行，使之能轻松成为MySQL的代替品。<br>yum install mariadb-server mariadb<br>mariadb数据库的相关命令是：<br>systemctl start mariadb  #启动MariaDB<br>systemctl stop mariadb  #停止MariaDB<br>systemctl restart mariadb  #重启MariaDB<br>systemctl enable mariadb  #设置开机启动<br>验证 MySQL 安装<br>在成功安装 MySQL 后，一些基础表会表初始化，在服务器启动后，你可以通过简单的测试来验证 MySQL 是否工作正常。<br>使用 mysqladmin 工具来获取服务器状态：<br>使用 mysqladmin 命令俩检查服务器的版本, 在 linux 上该二进制文件位于 /usr/bin 目录，在 Windows 上该二进制文件位于C:\mysql\bin 。<br>[root@host]# mysqladmin –version<br>linux上该命令将输出以下结果，该结果基于你的系统信息：<br>mysqladmin  Ver 8.23 Distrib 5.0.9-0, for redhat-linux-gnu on i386<br>如果以上命令执行后未输出任何信息，说明你的Mysql未安装成功。<br>使用 MySQL Client(Mysql客户端) 执行简单的SQL命令<br>你可以在 MySQL Client(Mysql客户端) 使用 mysql 命令连接到 MySQL 服务器上，默认情况下 MySQL 服务器的登录密码为空，所以本实例不需要输入密码。<br>命令如下：<br>[root@host]# mysql<br>以上命令执行后会输出 mysql&gt;提示符，这说明你已经成功连接到Mysql服务器上，你可以在 mysql&gt; 提示符执行SQL命令：<br>mysql&gt; SHOW DATABASES;<br>+———-+<br>| Database |<br>+———-+<br>| mysql    |<br>| test     |<br>+———-+<br>2 rows in set (0.13 sec)<br>Mysql安装后需要做的<br>Mysql安装成功后，默认的root用户密码为空，你可以使用以下命令来创建root用户的密码：<br>[root@host]# mysqladmin -u root password “new_password”;<br>现在你可以通过以下命令来连接到Mysql服务器：<br>[root@host]# mysql -u root -p<br>Enter password:<strong>***</strong><br>注意：在输入密码时，密码是不会显示了，你正确输入即可。</p>
+        <p>•┈┈┈┈┈┈୨୧┈┈┈┈┈┈•<br><a id="more"></a><br>•┈┈┈┈┈┈┈┈┈┈┈┈•</p>
+<p>制作cmd版本查询ip信息的容器<br>制作entroypoint查询ip信息的容器</p>
+<p> 制作cmd版本查询ip信息的容器</p>
+<h1 id="编写dockerfile"><a href="#编写dockerfile" class="headerlink" title="编写dockerfile"></a>编写dockerfile</h1><p>from centos<br>rum yum install -y curl<br>cmd [ “curl”, “-s” , “<a href="http://ip.cn&quot;" target="_blank" rel="noopener">http://ip.cn&quot;</a>  ]</p>
+<p>#构建镜像<br>docker build -f /mydocker/dockerfile3 -t myip .</p>
+<p>报错:<br><figure class="highlight plain"><figcaption><span>build context to Docker daemon  3.072kB</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Step 1/3 : from centos</span><br><span class="line"> ---&gt; 9f38484d220f</span><br><span class="line">Step 2/3 : run yum install -y curl</span><br><span class="line"> ---&gt; [Warning] IPv4 forwarding is disabled. Networking will not work.</span><br><span class="line"> ---&gt; Running in 990bff3de5c1</span><br><span class="line">Loaded plugins: fastestmirror, ovl</span><br><span class="line">Determining fastest mirrors</span><br></pre></td></tr></table></figure></p>
+<p> One of the configured repositories failed (Unknown),<br> and yum doesn’t have enough cached data to continue. At this point the only<br> safe thing yum can do is fail. There are a few ways to work “fix” this:</p>
+<pre><code>1. Contact the upstream for the repository and get them to fix the problem.
+
+2. Reconfigure the baseurl/etc. for the repository, to point to a working
+   upstream. This is most often useful if you are using a newer
+   distribution release than is supported by the repository (and the
+   packages for the previous distribution release still work).
+
+3. Run the command with the repository temporarily disabled
+       yum --disablerepo=&lt;repoid&gt; ...
+
+4. Disable the repository permanently, so yum won&apos;t use it by default. Yum
+   will then just ignore the repository until you permanently enable it
+   again or use --enablerepo for temporary usage:
+
+       yum-config-manager --disable &lt;repoid&gt;
+   or
+       subscription-manager repos --disable=&lt;repoid&gt;
+
+5. Configure the failing repository to be skipped, if it is unavailable.
+   Note that yum will try to contact the repo. when it runs most commands,
+   so will have to try and fail each time (and thus. yum will be be much
+   slower). If it is a very temporary problem though, this is often a nice
+   compromise:
+
+       yum-config-manager --save --setopt=&lt;repoid&gt;.skip_if_unavailable=true
+</code></pre><p>Cannot find a valid baseurl for repo: base/7/x86_64<br>Could not retrieve mirrorlist <a href="http://mirrorlist.centos.org/?release=7&amp;arch=x86_64&amp;repo=os&amp;infra=container" target="_blank" rel="noopener">http://mirrorlist.centos.org/?release=7&amp;arch=x86_64&amp;repo=os&amp;infra=container</a> error was</p>
+<h3 id="在宿主机上修改-usr-lib-sysctl-d-00-system-conf"><a href="#在宿主机上修改-usr-lib-sysctl-d-00-system-conf" class="headerlink" title="在宿主机上修改/usr/lib/sysctl.d/00-system.conf"></a>在宿主机上修改/usr/lib/sysctl.d/00-system.conf</h3><p>vim /usr/lib/sysctl.d/00-system.conf<br>加入 net.ipv4.ip_forward=1 </p>
+<h3 id="重启network和docker服务"><a href="#重启network和docker服务" class="headerlink" title="重启network和docker服务"></a>重启network和docker服务</h3><p>systemctl restart network &amp;&amp; systemctl restart docker</p>
+<h3 id="继续构建镜像"><a href="#继续构建镜像" class="headerlink" title="继续构建镜像"></a>继续构建镜像</h3><p>docker build -f /mydocker/dockerfile3 -t myip .</p>
+<h3 id="查看构建的镜像"><a href="#查看构建的镜像" class="headerlink" title="查看构建的镜像"></a>查看构建的镜像</h3><p>docker images</p>
+<h3 id="构建容器"><a href="#构建容器" class="headerlink" title="构建容器"></a>构建容器</h3><p>docker run -it myip<br>(输出一堆html)</p>
+<h3 id="体验加参数"><a href="#体验加参数" class="headerlink" title="体验加参数"></a>体验加参数</h3><p>docker run -it myip -I<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker: Error response from daemon: OCI runtime create failed: container_linux.go:345: starting container process caused &quot;exec: \&quot;-i\&quot;: executable file not found in $PATH&quot;: unknown.</span><br></pre></td></tr></table></figure></p>
+<p>Docker run 后面加参数<br>由于dockerfile 用的是cmd<br>所以<br>Docker run 后面加参数导致 cmd被替换<br>所以输出被替换了<br>所以报错</p>
+<h1 id="制作entrypoint查询ip信息的容器"><a href="#制作entrypoint查询ip信息的容器" class="headerlink" title="制作entrypoint查询ip信息的容器"></a>制作entrypoint查询ip信息的容器</h1><p>##编写dockerfile</p>
+<p>from centos<br>rum yum install -y curl<br>entrypoint [ “curl”, “-s” , “<a href="http://ip.cn&quot;" target="_blank" rel="noopener">http://ip.cn&quot;</a>  ]</p>
+<p>##构建镜像<br>docker build -f /mydocker/dockerfile4 -t mm .</p>
+<p>##构建容器<br>docker run -it myip<br>(输出一堆html)</p>
+<p>##体验加参数<br>docker run -it myip -i</p>
+<p>Docker run 后面加参数<br>由于dockerfile 用的是entrypoint<br>所以<br>Docker run 后面加参数<br>是以追加的方式 接在命令后面<br>所以输出没报错- -</p>
+<p>「完」</p>
 
       
     </div>
@@ -442,7 +487,7 @@
       
         <div class="post-tags">
           
-            <a href="../../../../tags/shell/" rel="tag"># shell</a>
+            <a href="../../../../tags/docker/" rel="tag"># docker</a>
           
         </div>
       
@@ -467,8 +512,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="../../24/mysql备份以及删除过期备份shell/" rel="next" title="mysql数据库定期备份以及删除">
-                <i class="fa fa-chevron-left"></i> mysql数据库定期备份以及删除
+              <a href="../../08/nginx配置/" rel="next" title="nginx配置备注 ;">
+                <i class="fa fa-chevron-left"></i> nginx配置备注 ;
               </a>
             
           </div>
@@ -477,8 +522,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="../../28/监测主从同步并发邮件/" rel="prev" title="监测主从同步是否运行并发邮件">
-                监测主从同步是否运行并发邮件 <i class="fa fa-chevron-right"></i>
+              <a href="../../../../3020/04/29/picture/" rel="prev" title="访问量/阅读次数/字数统计[说明]">
+                访问量/阅读次数/字数统计[说明] <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -533,8 +578,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -650,6 +704,22 @@ show_date_time();
       </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#编写dockerfile"><span class="nav-number">1.</span> <span class="nav-text">编写dockerfile</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#在宿主机上修改-usr-lib-sysctl-d-00-system-conf"><span class="nav-number">1.0.1.</span> <span class="nav-text">在宿主机上修改/usr/lib/sysctl.d/00-system.conf</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重启network和docker服务"><span class="nav-number">1.0.2.</span> <span class="nav-text">重启network和docker服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#继续构建镜像"><span class="nav-number">1.0.3.</span> <span class="nav-text">继续构建镜像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看构建的镜像"><span class="nav-number">1.0.4.</span> <span class="nav-text">查看构建的镜像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#构建容器"><span class="nav-number">1.0.5.</span> <span class="nav-text">构建容器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#体验加参数"><span class="nav-number">1.0.6.</span> <span class="nav-text">体验加参数</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#制作entrypoint查询ip信息的容器"><span class="nav-number">2.</span> <span class="nav-text">制作entrypoint查询ip信息的容器</span></a></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
